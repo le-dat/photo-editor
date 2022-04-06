@@ -1,38 +1,70 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+.container {
+  display: grid;
+  grid-template-columns: 0.9fr auto;
+  grid-template-rows: 1fr auto;
+  grid-template-areas:
+    "image sidebar"
+    "range sidebar";
+  width: 100vw;
+  height: 100vh;
+  background-color: #dadada;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.image-container {
+  grid-area: image;
+  background: url("./img/grilxinh.webp") no-repeat top center;
+  background-size: contain;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.sidebar-container {
+  grid-area: sidebar;
+  background-color: #fafafa;
+  border-left: 1px solid #5584ac;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.side-item {
+  font-size: 25px;
+  outline: none;
+  border: none;
+  padding: 15px 10px;
+  position: relative;
+  transition: background-color 150ms;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.side-item::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  bottom: 0;
+  width: 90%;
+  height: 1px;
+  background-color: #5584ac;
+}
+.side-item:last-child::after {
+  display: none;
+}
+.side-item.active,
+.side-item:focus {
+  background-color: #5584ac;
+  opacity: 0.85;
+}
+.side-item:hover,
+.side-item:focus {
+  background-color: #5584ac;
+  color: #fff;
+}
+.range-container {
+  grid-area: range;
+  margin-top: 0.5rem;
+  padding: 3rem;
+}
+.range {
+  width: 100%;
 }
